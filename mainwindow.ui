@@ -1,0 +1,32 @@
+<ui version="4.0">
+  <widget class="QMainWindow" name="MainWindow">
+    <widget class="QWidget" name="centralWidget">
+      <layout class="QVBoxLayout">
+        <item>
+          <widget class="QListWidget" name="taskList"/>
+        </item>
+        <item>
+          <layout class="QHBoxLayout">
+            <item>
+              <widget class="QLineEdit" name="taskInput"/>
+            </item>
+            <item>
+              <widget class="QPushButton" name="addButton">
+                <property name="text">
+                  <string>Добавить</string>
+                </property>
+              </widget>
+            </item>
+            <item>
+              <widget class="QPushButton" name="removeButton">
+                <property name="text">
+                  <string>Удалить</string>
+                </property>
+              </widget>
+            </item>
+          </layout>
+        </item>
+      </layout>
+    </widget>
+  </widget>
+</ui>
