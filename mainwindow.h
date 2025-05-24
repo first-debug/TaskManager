@@ -30,6 +30,7 @@ private slots:
     void editTask();
     void removeTask();
     void loadTasks();
+    void markCompleted();
 
 private:
     Ui::MainWindow *ui;

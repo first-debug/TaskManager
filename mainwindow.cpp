@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->filterPriority, &QComboBox::activated, this, &MainWindow::loadTasks);
     connect(ui->sortComboBox, &QComboBox::activated, this, &MainWindow::loadTasks);
     connect(ui->filterTags, &QLineEdit::textEdited, this, &MainWindow::loadTasks);
-    // connect(ui->itemWidget, &TaskWidgetItem::removeRequested, this, &MainWindow::removeTask);
 }
 
 MainWindow::~MainWindow() {
@@ -106,5 +105,18 @@ void MainWindow::addTaskToUi(const Task& task) {
     QListWidgetItem *listItem = new QListWidgetItem(ui->taskList);
     listItem->setSizeHint(itemWidget->sizeHint());
     ui->taskList->setItemWidget(listItem, itemWidget);
-    connect(itemWidget, &TaskWidgetItem::deleteRequested, this, &MainWindow::removeTask);
+    connect(itemWidget, &TaskWidgetItem::deleteRequested, this, &MainWindow::markCompleted);
+}
+
+void MainWindow::markCompleted() {
+    QListWidgetItem* item = ui->taskList->currentItem();
+    if (!item) return;
+
+    int row = ui->taskList->row(item);
+    Task taskToMark = tasks[row];
+
+    loadTasks();
+
+    if (!taskDB.markCompletedById(taskToMark.id))
+        QMessageBox::warning(this, "Ошибка", "Не удалось отметиить задачу выполненной!");
 }

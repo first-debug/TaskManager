@@ -13,9 +13,10 @@ public:
          const QString& description = "",
          const QString& deadline = "",
          const QString& priority = "Средний",
+         const QString& status = "Active",
          const QStringList& tags = QStringList())
         : id(id), text(text), description(description),
-          deadline(deadline), priority(priority), tags(tags)
+          deadline(deadline), priority(priority), status(status), tags(tags)
     { }
 
     int id;
@@ -23,6 +24,7 @@ public:
     QString description;
     QString deadline; // Формат "dd.MM.yyyy hh:mm"
     QString priority;
+    QString status; // Active, Complited
     QStringList tags;
 };
 

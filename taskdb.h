@@ -22,6 +22,7 @@ public:
     bool addTask(const Task&);
     bool updateTask(const Task&);
     bool removeTaskById(const int);
+    bool markCompletedById(const int);
 
 private:
     QSqlDatabase m_db;
