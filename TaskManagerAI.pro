@@ -11,18 +11,20 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    newtaskdialog.cpp \
-    taskdb.cpp
+    taskdb.cpp \
+    taskdialog.cpp \
+    taskwidgetitem.cpp
 
 HEADERS += \
     mainwindow.h \
-    newtaskdialog.h \
     task.h \
-    taskdb.h
+    taskdb.h \
+    taskdialog.h \
+    taskwidgetitem.h
 
 FORMS += \
     mainwindow.ui \
-    newtaskdialog.ui
+    taskdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -6,6 +6,8 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QString>
+#include <QComboBox>
+#include <QLineEdit>
 
 #include "task.h"
 
@@ -16,8 +18,9 @@ public:
     ~TaskDB();
 
     bool init();
-    void loadTasks(QList<Task>&);
+    void loadTasks(QList<Task>&, QString prority = "", QString sortParm = "", QString tags = "");
     bool addTask(const Task&);
+    bool updateTask(const Task&);
     bool removeTaskById(const int);
 
 private:

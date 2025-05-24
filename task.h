@@ -21,7 +21,7 @@ public:
     int id;
     QString text;
     QString description;
-    QString deadline;
+    QString deadline; // Формат "dd.MM.yyyy hh:mm"
     QString priority;
     QStringList tags;
 };

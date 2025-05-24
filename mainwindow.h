@@ -5,10 +5,11 @@
 #include <QListWidget>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QSettings>
+#include <QDialog>
 
 #include "task.h"
 #include "taskdb.h"
+#include "taskwidgetitem.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -26,14 +27,16 @@ public:
 
 private slots:
     void addTask();
+    void editTask();
     void removeTask();
+    void loadTasks();
 
 private:
     Ui::MainWindow *ui;
     TaskDB taskDB;
     QList<Task> tasks;
 
-    void loadTasks();
+    void addTaskToUi(const Task&);
 };
 
 #endif // MAINWINDOW_H
