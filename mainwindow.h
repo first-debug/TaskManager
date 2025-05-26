@@ -9,7 +9,6 @@
 
 #include "task.h"
 #include "taskdb.h"
-#include "taskwidgetitem.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui

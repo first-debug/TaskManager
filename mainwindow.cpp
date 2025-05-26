@@ -1,6 +1,7 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "ui/ui_mainwindow.h"
 #include "taskdialog.h"
+#include "taskwidgetitem.h"
 
 #include <QMessageBox>
 #include <QDebug>

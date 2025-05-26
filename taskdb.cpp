@@ -2,7 +2,6 @@
 
 #include "taskdb.h"
 
-
 TaskDB::TaskDB()
 { }
 

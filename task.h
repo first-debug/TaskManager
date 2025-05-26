@@ -4,7 +4,6 @@
 #include <QString>
 #include <QStringList>
 
-
 class Task
 {
 public:

@@ -22,6 +22,9 @@ public:
 private:
     Ui::TaskDialog *ui;
     Task m_currentTask;
+
+private slots:
+    void checkDeadlineInput();
 };
 
 #endif // TASKDIALOG_H

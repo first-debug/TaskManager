@@ -1,4 +1,5 @@
 #include <QDebug>
+#include <QMessageBox>
 
 #include "taskdialog.h"
 #include "ui_taskdialog.h"
@@ -12,6 +13,7 @@ TaskDialog::TaskDialog(QWidget *parent, Task task) :
 
     ui->priorityComboBox->addItems({"Высокий", "Средний", "Низкий"});
     ui->priorityComboBox->setCurrentIndex(1);
+    ui->dueDateEdit->setMinimumDateTime(QDateTime::currentDateTime());
 
     if (m_currentTask.id != -1) {
         ui->taskName->setText(m_currentTask.text);
@@ -22,8 +24,15 @@ TaskDialog::TaskDialog(QWidget *parent, Task task) :
     } else {
         ui->dueDateEdit->setDateTime(QDateTime::currentDateTime().addDays(1));
     }
-    connect(ui->buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
+    connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [this]() {
+        if (ui->taskName->text().isEmpty()){
+            QMessageBox::warning(this, "Ошибка", "Нужно ввести название!");
+            return;
+        }
+        emit accepted();
+    });
     connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
+    connect(ui->dueDateEdit, &QDateTimeEdit::dateTimeChanged, this, &TaskDialog::checkDeadlineInput);
 }
 
 Task TaskDialog::getTask() const
@@ -42,4 +51,9 @@ Task TaskDialog::getTask() const
 TaskDialog::~TaskDialog()
 {
     delete ui;
+}
+
+void TaskDialog::checkDeadlineInput() {
+    if (ui->dueDateEdit->dateTime() <= QDateTime::currentDateTime())
+        QMessageBox::warning(this, "Ошибка", "Неверное время для дедлайна!");
 }
