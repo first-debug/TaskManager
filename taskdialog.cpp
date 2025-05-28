@@ -4,10 +4,10 @@
 #include "taskdialog.h"
 #include "ui_taskdialog.h"
 
-TaskDialog::TaskDialog(QWidget *parent, Task task) :
+TaskDialog::TaskDialog(QWidget *parent, Task* task) :
     QDialog(parent),
     ui(new Ui::TaskDialog),
-    m_currentTask(task)
+    m_currentTask(*task)
 {
     ui->setupUi(this);
 
@@ -29,10 +29,12 @@ TaskDialog::TaskDialog(QWidget *parent, Task task) :
             QMessageBox::warning(this, "Ошибка", "Нужно ввести название!");
             return;
         }
-        emit accepted();
+        accept();
     });
     connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
     connect(ui->dueDateEdit, &QDateTimeEdit::dateTimeChanged, this, &TaskDialog::checkDeadlineInput);
+
+    delete task;
 }
 
 Task TaskDialog::getTask() const

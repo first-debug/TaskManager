@@ -75,7 +75,7 @@ void MainWindow::addTask() {
 void MainWindow::editTask() {
     int row = ui->taskList->currentIndex().row();
     Task taskToEdit = tasks[row];
-    TaskDialog dialog(this, taskToEdit);
+    TaskDialog dialog(this, &taskToEdit);
 
     if (dialog.exec() == QDialog::Accepted) {
         Task newTask = dialog.getTask();
@@ -115,9 +115,8 @@ void MainWindow::markCompleted() {
 
     int row = ui->taskList->row(item);
     Task taskToMark = tasks[row];
-
-    loadTasks();
-
     if (!taskDB.markCompletedById(taskToMark.id))
         QMessageBox::warning(this, "Ошибка", "Не удалось отметиить задачу выполненной!");
+
+    loadTasks();
 }

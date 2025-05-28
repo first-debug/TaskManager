@@ -14,7 +14,7 @@ class TaskDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit TaskDialog(QWidget *parent = nullptr, Task task = Task());
+    explicit TaskDialog(QWidget *parent = nullptr, Task* task = new Task());
     ~TaskDialog();
 
     Task getTask() const;
