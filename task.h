@@ -4,9 +4,9 @@
 #include <QString>
 #include <QStringList>
 
-class Task
+struct Task
 {
-public:
+
     Task(const int id = -1,
          const QString& text = "",
          const QString& description = "",
